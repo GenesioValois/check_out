@@ -1,0 +1,17 @@
+# frozen_string_literal: true
+
+class Basket
+  attr_accessor :products
+
+  def initialize(products)
+    @products = products
+  end
+
+  def size
+    products.size
+  end
+
+  def codes
+    products.map(&:code)
+  end
+end
