@@ -10,4 +10,8 @@ class Basket
   def size
     products.size
   end
+
+  def codes
+    products.map(&:code)
+  end
 end
