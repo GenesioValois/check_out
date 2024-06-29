@@ -1,0 +1,2 @@
+class GreenTea
+end
