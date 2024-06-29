@@ -28,8 +28,10 @@ module Services
 
     def products
       codes.split(',').map do |code|
+        next if CODESTOOBJ[code.strip].nil?
+
         CODESTOOBJ[code.strip].new
-      end
+      end.compact
     end
   end
 end
