@@ -7,7 +7,7 @@ module Services
     extend Callable
 
     CODESTOOBJ = {
-      'CR1' => GreenTea,
+      'GR1' => GreenTea,
       'SR1' => Strawberries,
       'CF1' => Coffee
     }.freeze
