@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe GreenTea do
+RSpec.describe Strawberries do
   it 'test initial Strawberries values' do
     strawberries = Strawberries.new
     expect(strawberries.code).to eq('SR1')
