@@ -14,4 +14,10 @@ RSpec.describe Basket do
 
     expect(basket.size).to eq(3)
   end
+
+  it 'Basket should list all products code' do
+    basket = Basket.new(@products)
+
+    expect(basket.codes).to eq(%w[GR1 CF1 SR1])
+  end
 end
