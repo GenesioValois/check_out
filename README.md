@@ -1,35 +1,77 @@
-# CheckOut
+# Amenitiz Techincal Challenge
 
-TODO: Delete this and the text below, and describe your gem
+It's a Cash register application that allows you to add products, remove products, and calculate the total price of the products added.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/check_out`. To experiment with that code, run `bin/console` for an interactive prompt.
+### Assumptions
 
-## Installation
+**Products Registered**
+| Product Code | Name | Price |  
+|--|--|--|
+| GR1 |  Green Tea | 3.11€ |
+| SR1 |  Strawberries | 5.00 € |
+| CF1 |  Coffee | 11.23 € |
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+**Special conditions**
 
-Install the gem and add to the application's Gemfile by executing:
+- The CEO is a big fan of buy-one-get-one-free offers and green tea.
+He wants us to add a  rule to do this.
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+- The COO, though, likes low prices and wants people buying strawberries to get a price  discount for bulk purchases.
+If you buy 3 or more strawberries, the price should drop to 4.50€.
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+- The VP of Engineering is a coffee addict.
+If you buy 3 or more coffees, the price of all coffees should drop to 2/3 of the original price.
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+Our check-out can scan items in any order, and because the CEO and COO change their minds  often, it needs to be flexible regarding our pricing rules.
 
-## Usage
+## Pre-requisites (running locally)
 
-TODO: Write usage instructions here
+- Ruby >= 3.0.0
 
-## Development
+### Dependencies instalation
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+It's simple ruby application with small set of dependencies that can be installed using the following command:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```bash
+bundle install
+```
 
-## Contributing
+## Running the application
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/check_out.
+The application has a simple CLI interface, to run it you can use the following command:
+```bash
+ruby lib/cli.rb
+```
 
-## License
+## Running the tests
+To run the tests, you can use the following command:
+```bash
+bundle exec rspec
+```
+## Using Docker
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+You can use Docker build the image, create and run a container with the application:
+
+```bash
+docker build -t check-out . && docker run -it check-out
+```
+
+Now inside the container we can run the tests or the application with the commands
+aforementioned.
+
+
+## Project structure
+
+The application consists of the following structure:
+
+- **lib/check-out**: Represents the set of avaliable Objects such: Basket, Coffee and the other products.
+
+- **lib/services**: Defines all the actions that can be done with the defined objects such as create a basket and calculate the final price of a basket.
+
+## CLI
+The CLI has 5 options:
+ - Create a new basket: Create a new basket from a list of product codes.
+ - Calculate final price: Calculate the final price with discounts of a basket.
+ - Add products to the basket: Add new products to the current basket.
+ - Remove products to the basket: Remove existing products from the current basket.
+ - Exi
